@@ -8,7 +8,7 @@ let serpiente = [
     { x: 8, y: 10 }
 ];
 
-let direccion = 'abajo';
+let direccion = 'derecha';
 
 function dibujarSerpiente() {
     for (let i = 0; i < serpiente.length; i++) {
@@ -47,3 +47,7 @@ document.addEventListener('keydown', function (evento) {
         direccion = 'abajo';
     }
 });
+
+let x = Math.floor((Math.random() * 100) + 1);
+
+console.log(x);
