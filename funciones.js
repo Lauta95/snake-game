@@ -5,7 +5,7 @@ const contexto = lienzo.getContext('2d');
 let serpiente = [
     { x: 10, y: 10 },
     { x: 9, y: 10 },
-    { x: 8, y: 10 }
+    { x: 8, y: 10 },
 ];
 
 let direccion = 'derecha';
@@ -39,7 +39,7 @@ setInterval(actualizar, 100);
 document.addEventListener('keydown', function (evento) {
     if (evento.key === 'ArrowRight' && direccion !== 'izquierda') {
         direccion = 'derecha';
-    } else if (evento.key === 'ArrowLeft' && direccion !== 'derecha'){
+    } else if (evento.key === 'ArrowLeft' && direccion !== 'derecha') {
         direccion = 'izquierda';
     } else if (evento.key === 'ArrowUp' && direccion !== 'abajo') {
         direccion = 'arriba';
@@ -48,6 +48,20 @@ document.addEventListener('keydown', function (evento) {
     }
 });
 
-let x = Math.floor((Math.random() * 100) + 1);
+let x;
+let y;
+let z;
 
 console.log(x);
+console.log(y);
+console.log(z);
+
+document.getElementById('btn').onclick = function () {
+    x = Math.floor((Math.random() * 10) + 1);
+    y = Math.floor((Math.random() * 10) + 1);
+    z = Math.floor((Math.random() * 10) + 1);
+
+    document.getElementById('xlabel').innerHTML = x;
+    document.getElementById('ylabel').innerHTML = y;
+    document.getElementById('zlabel').innerHTML = z;
+} 
