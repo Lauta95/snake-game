@@ -17,8 +17,6 @@ function dibujarSerpiente() {
     }
 }
 
-dibujarSerpiente();
-
 function actualizar() {
     if (direccion === 'derecha') {
         serpiente.unshift({ x: serpiente[0].x + 1, y: serpiente[0].y });
