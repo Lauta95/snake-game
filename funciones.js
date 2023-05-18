@@ -10,6 +10,8 @@ let serpiente = [
 
 let direccion = 'derecha';
 
+let comida = { x: 0, y: 0 };
+
 function dibujarSerpiente() {
     for (let i = 0; i < serpiente.length; i++) {
         contexto.fillStyle = '#00FF00';
@@ -46,20 +48,15 @@ document.addEventListener('keydown', function (evento) {
     }
 });
 
-let x;
-let y;
-let z;
+function dibujarComida() {
+    contexto.fillStyle = '#FF0000';
+    contexto.fillRect(comida.x * 10, comida.y * 10, 10, 10);
+}
 
-console.log(x);
-console.log(y);
-console.log(z);
+function generarComida() {
+    comida.x = Math.floor(Math.random() * lienzo.width / 10);
+    comida.y = Math.floor(Math.random() * lienzo.width / 10);
+}
 
-document.getElementById('btn').onclick = function () {
-    x = Math.floor((Math.random() * 10) + 1);
-    y = Math.floor((Math.random() * 10) + 1);
-    z = Math.floor((Math.random() * 10) + 1);
-
-    document.getElementById('xlabel').innerHTML = x;
-    document.getElementById('ylabel').innerHTML = y;
-    document.getElementById('zlabel').innerHTML = z;
-} 
+generarComida();
+dibujarComida();
