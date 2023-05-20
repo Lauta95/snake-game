@@ -4,8 +4,8 @@ const contexto = lienzo.getContext('2d');
 
 let serpiente = [
     { x: 10, y: 10 },
-    { x: 9, y: 10 },
-    { x: 8, y: 10 },
+    // { x: 9, y: 10 },
+    // { x: 8, y: 10 },
 ];
 
 let direccion = 'derecha';
@@ -30,7 +30,7 @@ function actualizar() {
         serpiente.unshift({ x: serpiente[0].x, y: serpiente[0].y + 1 });
     }
 
-    serpiente.pop();
+    // serpiente.pop();
     dibujarSerpiente();
 }
 
