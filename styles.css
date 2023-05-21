@@ -1,9 +1,6 @@
-.recuadro {
-    width: 1000px;
-    height: 750px;
-    border: 3px black solid;
+body {
+    background-color: cadetblue;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
 
-body {
-    background-color:cadetblue;
-}
