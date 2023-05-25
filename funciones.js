@@ -35,6 +35,13 @@ window.onload = function () {
 function update() {
     context.fillStyle = 'black';
     context.fillRect(0, 0, board.width, board.height);
+    // Se coloca la comida antes que la serpiente para que la serpiente pase por arriba y no por abajo.
+    context.fillStyle = 'red';
+    context.fillRect(foodX, foodY, blockSize, blockSize);
+    // Condicional para que cada vez que colisione con la comida se mueva a un lugar al azar
+    if (snakeX == foodX && snakeY == foodY) {
+        placeFood();
+    }
 
     context.fillStyle = 'yellow';
     // hay que agregar la velocidad a la funcion update para que sume en eje x y en eje y.
@@ -42,8 +49,7 @@ function update() {
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
 
-    context.fillStyle = 'red';
-    context.fillRect(foodX, foodY, blockSize, blockSize);
+
 }
 
 function changeDirection(e) {
