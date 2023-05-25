@@ -53,16 +53,17 @@ function update() {
 }
 
 function changeDirection(e) {
-    if (e.code == 'ArrowUp') {
+    // se agrega un and diferente a el opuesto porque la serpiente no puede ir en contra de la dirección en la que va debido a que se comería a si misma
+    if (e.code == 'ArrowUp' && velocityY != 1) {
         velocityX = 0;
         velocityY = -1;
-    } else if (e.code == 'ArrowDown') {
+    } else if (e.code == 'ArrowDown' && velocityX != -1) {
         velocityX = 0;
         velocityY = 1;
-    } else if (e.code == 'ArrowLeft') {
+    } else if (e.code == 'ArrowLeft' && velocityX != 1) {
         velocityX = -1;
         velocityY = 0;
-    } else if (e.code == 'ArrowRight') {
+    } else if (e.code == 'ArrowRight' && velocityY != -1) {
         velocityX = 1;
         velocityY = 0;
     }
