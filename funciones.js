@@ -13,10 +13,14 @@ let snakeY = blockSize * 5;
 let velocityX = 0;
 let velocityY = 0;
 
+let snakeBody = [];
+
 // Variables de la comida
 
-let foodX = blockSize * 10;
-let foodY = blockSize * 10;
+let foodX;
+let foodY;
+
+let gameOver = false;
 
 window.onload = function () {
     board = document.getElementById('board');
@@ -33,6 +37,9 @@ window.onload = function () {
 }
 
 function update() {
+    if (gameOver) {
+        return;
+    }
     context.fillStyle = 'black';
     context.fillRect(0, 0, board.width, board.height);
     // Se coloca la comida antes que la serpiente para que la serpiente pase por arriba y no por abajo.
@@ -40,7 +47,16 @@ function update() {
     context.fillRect(foodX, foodY, blockSize, blockSize);
     // Condicional para que cada vez que colisione con la comida se mueva a un lugar al azar
     if (snakeX == foodX && snakeY == foodY) {
+        snakeBody.push([foodX, foodY]);
         placeFood();
+    }
+
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i - 1];
+    }
+
+    if (snakeBody.length) {
+        snakeBody[0] = [snakeX, snakeY];
     }
 
     context.fillStyle = 'yellow';
@@ -48,8 +64,22 @@ function update() {
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
+    for (let i = 0; i < snakeBody.length; i++) {
+        context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
+    }
 
+    // condicion para terminar el juego
+    if (snakeX < 0 || snakeX > cols * blockSize || snakeY < 0 || snakeY > cols * blockSize) {
+        gameOver = true;
+        alert('Juego terminado');
+    }
 
+    for (let i = 0; i < snakeBody.length; i++) {
+        if (snakeX == snakeBody[i][0] && snakeY == snakeBody[i][1]) {
+            gameOver = true;
+            alert('Juego terminado');
+        }
+    }
 }
 
 function changeDirection(e) {
